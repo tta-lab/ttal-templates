@@ -1,3 +1,9 @@
+---
+name: Full (Markdown)
+description: Complete team with plans stored as markdown in your repo
+agents: manager, designer, researcher, lifecycle
+---
+
 # Full (Markdown) — 4-Agent Team
 
 A complete ttal team with task management, research, design, and worker lifecycle. Plans and research are stored as markdown files in your project repos.

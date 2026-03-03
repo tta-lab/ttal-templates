@@ -1,3 +1,10 @@
+---
+name: Full (FlickNote)
+description: Complete team with personalities, plans stored in FlickNote
+agents: compass, ink, owl, hawk
+install_hint: "Requires FlickNote CLI (coming soon — see https://github.com/tta-lab/flicknote-cli)"
+---
+
 # Full (FlickNote) — 4-Agent Team with Personalities
 
 A complete ttal team with creature identities and FlickNote-based plan storage. This is the power-user setup — agents have personality, voice, and character.
