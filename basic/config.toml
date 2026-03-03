@@ -1,0 +1,38 @@
+#:schema https://ttal.guion.io/schema/config.schema.json
+default_team = "default"
+
+[sync]
+  skills_paths = ["./docs/skills"]
+  subagents_paths = ["./docs/agents"]
+  commands_paths = ["./docs/commands"]
+
+[prompts]
+design = """\
+Write an implementation plan for this task.
+Read the task first: ttal task get {{task-id}}
+
+Save plan to: docs/plans/YYYY-MM-DD-<topic>.md in the project repo.
+When done: task {{task-id}} annotate 'Plan: docs/plans/<filename>.md'
+Then tag-swap: task {{task-id}} modify -brainstorm -design +planned"""
+
+execute = """\
+Implement this task following any referenced plan.
+Read the task first: ttal task get {{task-id}}
+Follow the plan step by step: read, make changes, verify, commit.
+Use ttal pr create for pull requests."""
+
+# triage and review prompts are omitted — the basic scaffold has no
+# lifecycle agent or reviewer. Add them when you upgrade to full-markdown
+# or full-flicknote.
+
+[teams.default]
+chat_id = ""                 # Your Telegram chat ID (get from @userinfobot)
+team_path = ""               # Path to your workspace (e.g. ~/ttal-workspace)
+lifecycle_agent = "manager"  # manager doubles as lifecycle in basic setup
+design_agent = "designer"
+
+# Bot tokens go in ~/.config/ttal/.env, not here.
+# Convention: {UPPER_AGENT}_BOT_TOKEN=<telegram_token>
+# Run 'ttal doctor --fix' to generate a template .env file.
+[teams.default.agents.manager]
+[teams.default.agents.designer]
