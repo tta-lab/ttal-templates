@@ -1,6 +1,11 @@
 #:schema https://ttal.guion.io/schema/config.schema.json
 default_team = "default"
 
+[sync]
+  skills_paths = ["./docs/skills"]
+  subagents_paths = ["./docs/agents"]
+  commands_paths = ["./docs/commands"]
+
 [prompts]
 design = """\
 Write an implementation plan for this task.
