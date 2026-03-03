@@ -21,10 +21,14 @@ Read the task first: ttal task get {{task-id}}
 Follow the plan step by step: read, make changes, verify, commit.
 Use ttal pr create for pull requests."""
 
+# triage and review prompts are omitted — the basic scaffold has no
+# lifecycle agent or reviewer. Add them when you upgrade to full-markdown
+# or full-flicknote.
+
 [teams.default]
 chat_id = ""                 # Your Telegram chat ID (get from @userinfobot)
 team_path = ""               # Path to your workspace (e.g. ~/ttal-workspace)
-lifecycle_agent = "manager"
+lifecycle_agent = "manager"  # manager doubles as lifecycle in basic setup
 design_agent = "designer"
 
 # Bot tokens go in ~/.config/ttal/.env, not here.
