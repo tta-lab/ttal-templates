@@ -1,3 +1,9 @@
+---
+name: Basic
+description: Get started with task management and planning
+agents: manager, designer
+---
+
 # Basic — Manager + Designer
 
 A minimal ttal setup with two agents: one manages tasks, one designs implementation plans. Workers (coders and reviewers) are spawned on-demand.
