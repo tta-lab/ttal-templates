@@ -49,12 +49,12 @@ Do NOT merge — the coder handles merging after triage."""
 [teams.default]
 chat_id = ""                   # Your Telegram chat ID
 team_path = ""                 # Path to your workspace directory
-lifecycle_agent = "hawk"
 design_agent = "ink"
 research_agent = "owl"
+# notification_token_env = "DEFAULT_NOTIFICATION_BOT_TOKEN"
 # merge_mode = "auto"
 
 [teams.default.agents.compass]
 [teams.default.agents.ink]
 [teams.default.agents.owl]
-[teams.default.agents.hawk]
+[teams.default.agents.falcon]
