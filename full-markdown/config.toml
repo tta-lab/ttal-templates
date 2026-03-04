@@ -42,12 +42,12 @@ End with VERDICT: NEEDS_WORK or VERDICT: LGTM."""
 [teams.default]
 chat_id = ""                   # Your Telegram chat ID
 team_path = ""                 # Path to your workspace directory
-lifecycle_agent = "lifecycle"
 design_agent = "designer"
 research_agent = "researcher"
+# notification_token_env = "DEFAULT_NOTIFICATION_BOT_TOKEN"
 # merge_mode = "auto"         # Uncomment for auto-merge on LGTM
 
 [teams.default.agents.manager]
 [teams.default.agents.designer]
 [teams.default.agents.researcher]
-[teams.default.agents.lifecycle]
+[teams.default.agents.debugger]

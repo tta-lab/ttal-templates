@@ -1,7 +1,7 @@
 ---
 name: Full (FlickNote)
 description: Complete team with personalities, plans stored in FlickNote
-agents: compass, ink, owl, hawk
+agents: compass, ink, owl, falcon
 install_hint: "Requires FlickNote CLI (coming soon — see https://github.com/tta-lab/flicknote-cli)"
 ---
 
@@ -16,7 +16,7 @@ A complete ttal team with creature identities and FlickNote-based plan storage. 
 | **compass** | Compass | Task navigator — routes work, manages priorities |
 | **ink** | Octopus | Design architect — writes detailed implementation plans |
 | **owl** | Owl | Researcher — investigates topics, writes structured findings |
-| **hawk** | Hawk | Lifecycle — watches over workers, triages PRs |
+| **falcon** | Falcon | Bug fix designer — diagnoses bugs, writes fix plans |
 
 ## Storage
 
@@ -42,7 +42,8 @@ flicknote get <hex-id> --tree                    # See structure
    COMPASS_BOT_TOKEN=...
    INK_BOT_TOKEN=...
    OWL_BOT_TOKEN=...
-   HAWK_BOT_TOKEN=...
+   FALCON_BOT_TOKEN=...
+   DEFAULT_NOTIFICATION_BOT_TOKEN=...   # Team notifications (worker status, PR events)
    ```
 5. Install FlickNote CLI: see [flicknote.app](https://flicknote.app/)
 6. Run `ttal doctor` to verify

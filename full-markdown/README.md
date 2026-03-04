@@ -1,19 +1,19 @@
 ---
 name: Full (Markdown)
 description: Complete team with plans stored as markdown in your repo
-agents: manager, designer, researcher, lifecycle
+agents: manager, designer, researcher, debugger
 ---
 
 # Full (Markdown) — 4-Agent Team
 
-A complete ttal team with task management, research, design, and worker lifecycle. Plans and research are stored as markdown files in your project repos.
+A complete ttal team with task management, research, design, and bug diagnosis. Plans and research are stored as markdown files in your project repos.
 
 ## Agents
 
-- **manager** — task orchestrator. Routes work, manages priorities, handles daily focus.
+- **manager** — task orchestrator. Routes work, manages priorities, spawns workers.
 - **researcher** — investigator. Explores codebases, reads docs, writes structured findings.
 - **designer** — architect. Turns research into step-by-step implementation plans.
-- **lifecycle** — worker manager. Spawns workers, triages PR reviews, handles merges.
+- **debugger** — bug fix designer. Diagnoses bugs and writes fix plans for workers to execute.
 
 ## The pipeline
 
@@ -23,9 +23,11 @@ task add "Build feature X" +research
   → task moves to +design
   → designer writes plan to docs/plans/
   → you approve
-  → lifecycle spawns a worker
+  → manager spawns a worker: ttal task execute <uuid>
   → worker executes, creates PR
-  → lifecycle triages review, merges
+  → reviewer checks PR, worker triages feedback
+
+Bug reported → debugger diagnoses, writes fix plan → you approve → manager spawns worker
 ```
 
 ## Quick start
@@ -42,7 +44,8 @@ task add "Build feature X" +research
    MANAGER_BOT_TOKEN=...
    RESEARCHER_BOT_TOKEN=...
    DESIGNER_BOT_TOKEN=...
-   LIFECYCLE_BOT_TOKEN=...
+   DEBUGGER_BOT_TOKEN=...
+   DEFAULT_NOTIFICATION_BOT_TOKEN=...   # Team notifications (worker status, PR events)
    ```
 5. Run `ttal doctor` to verify
 6. Start the daemon: `ttal daemon start`

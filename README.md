@@ -6,9 +6,9 @@ Starter templates for [ttal](https://github.com/tta-lab/ttal-cli) — pick a sca
 
 | Scaffold | Agents | Best for |
 |----------|--------|----------|
-| [basic](./basic/) | 2 (manager, designer) | Getting started, free tier, testing A2A communication |
-| [full-markdown](./full-markdown/) | 4 (manager, designer, researcher, lifecycle) | Full team, plans stored as markdown in your repo |
-| [full-flicknote](./full-flicknote/) | 4 (compass, ink, owl, hawk) | Full team with agent personalities, plans stored in FlickNote |
+| [basic](./basic/) | 2 (manager, designer) | Getting started, testing A2A communication |
+| [full-markdown](./full-markdown/) | 4 (manager, designer, researcher, debugger) | Full team, plans stored as markdown in your repo |
+| [full-flicknote](./full-flicknote/) | 4 (compass, ink, owl, falcon) | Full team with agent personalities, plans stored in FlickNote |
 
 ## Usage
 
