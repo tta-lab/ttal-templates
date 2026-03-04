@@ -38,6 +38,7 @@ You create a task
    ```
    MANAGER_BOT_TOKEN=123:ABC...
    DESIGNER_BOT_TOKEN=456:DEF...
+   DEFAULT_NOTIFICATION_BOT_TOKEN=789:GHI...   # Team notifications (worker status, PR events)
    ```
 5. Run `ttal doctor` to verify
 6. Start the daemon: `ttal daemon start`
