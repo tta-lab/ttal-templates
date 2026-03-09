@@ -34,20 +34,19 @@ Verify: `ttal version`
 ttal onboard
 ```
 
-If onboard detects issues, it will fix them automatically (`--fix` mode). Parse its output for any errors that need user attention.
+If onboard reports fixable issues, re-run with `ttal onboard --fix`. Parse its output for any errors that need user attention.
 
-After onboard completes, verify the workspace team_path points to current directory:
+After onboard completes, capture workspace path and verify team_path points to current directory:
 
 ```bash
 WORKSPACE=$(pwd)
 grep "team_path" ~/.config/ttal/config.toml
 ```
 
-If team_path doesn't match current workspace, update it:
+If team_path doesn't match current workspace, update it using `perl -i -pe` (portable across macOS and Linux):
 
 ```bash
-WORKSPACE=$(pwd)
-sed -i '' "s|team_path = .*|team_path = \"$WORKSPACE\"|" ~/.config/ttal/config.toml
+perl -i -pe "s|team_path = .*|team_path = \"$WORKSPACE\"|" ~/.config/ttal/config.toml
 ```
 
 ## 3. Telegram Bot Setup (Optional)
@@ -63,15 +62,24 @@ Tell user:
 2. Send `/start` — it replies with your chat ID
 3. Ask user to paste their chat ID
 
-Update config.toml with the pasted chat_id.
+Write the chat_id to config.toml under `[teams.default]`:
+
+```bash
+perl -i -pe "s|chat_id = .*|chat_id = \"<pasted-id>\"|" ~/.config/ttal/config.toml
+```
+
+If the `chat_id` key doesn't exist yet, append it under the `[teams.default]` section.
 
 ### 3b. Create agent bots
 
-Discover agents in the workspace:
+Discover agents in the workspace root (`$WORKSPACE`):
 
 ```bash
+shopt -s nullglob
 for dir in */CLAUDE.md; do dirname "$dir"; done
 ```
+
+Token naming convention: uppercase the agent name and append `_BOT_TOKEN`. For example: agent `manager` → `MANAGER_BOT_TOKEN`, agent `yuki` → `YUKI_BOT_TOKEN`.
 
 For each agent, tell user:
 1. Open Telegram, search for `@BotFather`
@@ -80,16 +88,27 @@ For each agent, tell user:
 4. Username: `<agent-name>_ttal_bot` (must end in `bot`)
 5. Copy the bot token
 
-After user creates all bots, ask them to paste each token. Write to `~/.config/ttal/.env`:
+After user creates all bots, ask them to paste each token. Write to `~/.config/ttal/.env` using heredoc to avoid token exposure in process list:
 
 ```bash
-# For each agent:
-echo "AGENTNAME_BOT_TOKEN=<pasted-token>" >> ~/.config/ttal/.env
+# For each agent (example for agent named "yuki"):
+cat >> ~/.config/ttal/.env << 'ENVEOF'
+YUKI_BOT_TOKEN=<pasted-token>
+ENVEOF
 ```
 
 ### 3c. Notification bot
 
-Tell user to create one more bot for system notifications (PR status, CI results). Write token to .env.
+Tell user to create one more bot for system notifications (PR status, CI results):
+- Suggested username: `ttal_notify_bot`
+
+Write token as `DEFAULT_NOTIFICATION_BOT_TOKEN` to `.env`:
+
+```bash
+cat >> ~/.config/ttal/.env << 'ENVEOF'
+DEFAULT_NOTIFICATION_BOT_TOKEN=<pasted-token>
+ENVEOF
+```
 
 ### 3d. Verify
 
