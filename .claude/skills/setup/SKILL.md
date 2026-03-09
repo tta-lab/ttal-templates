@@ -68,7 +68,11 @@ Write the chat_id to config.toml under `[teams.default]`:
 perl -i -pe "s|chat_id = .*|chat_id = \"<pasted-id>\"|" ~/.config/ttal/config.toml
 ```
 
-If the `chat_id` key doesn't exist yet, append it under the `[teams.default]` section.
+If the `chat_id` key doesn't exist yet, append it under `[teams.default]`:
+
+```bash
+perl -i -pe 's/(\[teams\.default\])/\1\nchat_id = "<pasted-id>"/' ~/.config/ttal/config.toml
+```
 
 ### 3b. Create agent bots
 
